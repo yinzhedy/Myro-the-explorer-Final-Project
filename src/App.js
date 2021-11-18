@@ -3,6 +3,7 @@ import Game from './classes/game';
 import Player from './components/player/index';
 import './App.css';
 import Actor from'./components/actor/index'
+import Npc from "./components/npc";
 
 const CANVAS_WIDTH = 1000;
 const CANVAS_HEIGHT = 1000;
@@ -69,7 +70,7 @@ const CANVAS_HEIGHT = 1000;
               <Player skin="$Lanto180" data={data} /> 
             </div>
             <div className="enemy-1">
-              <Actor sprite="/sprites/skins/$Lanto179.png" data={data} position={70, 70}/> 
+              <Npc skin="$Lanto179" data={data}/> 
               <Actor sprite="/sprites/skins/$Lanto178.png" data={data} position={70, 70}/>
               <Actor sprite="/sprites/skins/$Lanto177.png" data={data} position={70, 70}/>
               <Actor sprite="/sprites/skins/$Lanto176.png" data={data} position={0, 50}/> 
