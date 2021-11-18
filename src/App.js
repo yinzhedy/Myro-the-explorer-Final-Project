@@ -4,6 +4,7 @@ import Player from './components/player/index';
 import './App.css';
 import Actor from'./components/actor/index'
 import Npc from "./components/npc";
+import MonsterNumberOne from "./components/monster-number-one";
 
 const CANVAS_WIDTH = 1000;
 const CANVAS_HEIGHT = 1000;
@@ -71,8 +72,8 @@ const CANVAS_HEIGHT = 1000;
             </div>
             <div className="enemy-1">
               <Npc skin="$Lanto179" data={data}/> 
-              <Actor sprite="/sprites/skins/$Lanto178.png" data={data} position={70, 70}/>
-              <Actor sprite="/sprites/skins/$Lanto177.png" data={data} position={70, 70}/>
+              <MonsterNumberOne skin="$Lanto105" data={data}/>
+              <MonsterNumberOne skin="$Lanto108" data={data}/>
               <Actor sprite="/sprites/skins/$Lanto176.png" data={data} position={0, 50}/> 
             </div>
         </div>
