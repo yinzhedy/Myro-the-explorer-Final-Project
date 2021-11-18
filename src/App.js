@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import Game from './classes/game';
 import Player from './components/player/index';
 import './App.css';
-import Actor from'./components/actor/index'
+import Actor from "./components/actor";
 import Npc from "./components/npc";
 import MonsterNumberOne from "./components/monster-number-one";
+import MonsterNumberTwo from "./components/monster-number-two";
+
+
 
 const CANVAS_WIDTH = 1000;
 const CANVAS_HEIGHT = 1000;
+
 
   // sprite code
   const data = {
@@ -48,15 +52,15 @@ const CANVAS_HEIGHT = 1000;
     };
   
     getContext = () => this.canvasRef.current.getContext("2d");
-  
+
   render() {
   return (
     <div>
         <div className="header">
-          Tilemaps examples (with React)
+          Myro The Explorer
         </div>
         <div className="subheader">
-          Scrolling map
+          "Not all those who wander are lost"
         </div>
         <div className="subheader2">
           Use arrow keys to move
@@ -73,13 +77,14 @@ const CANVAS_HEIGHT = 1000;
             <div className="enemy-1">
               <Npc skin="$Lanto179" data={data}/> 
               <MonsterNumberOne skin="$Lanto105" data={data}/>
-              <MonsterNumberOne skin="$Lanto108" data={data}/>
+              <MonsterNumberTwo skin="$Lanto108" data={data}/>
               <Actor sprite="/sprites/skins/$Lanto176.png" data={data} position={0, 50}/> 
             </div>
         </div>
       </div>
   );
   }
+
 }
 
 export default App;

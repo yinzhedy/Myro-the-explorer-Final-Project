@@ -1,7 +1,11 @@
 import React from "react";
-import Actor from "../actor/index"
+import Actor from "../actor";
 import useKeyPress from '../../hooks/use-key-press'
 import useWalk from '../../hooks/use-walk'
+import CollectPlayerPosition from "../../classes/collect-player-position";
+import ComarePositions from "../../classes/compare-positions";
+import App from "../../App";
+
 
 export default function Player({skin}) {
     const {dir, step, walk, position} = useWalk(3)
@@ -10,6 +14,7 @@ export default function Player({skin}) {
         w: 32,
     };
 
+ 
     if(position.y < 150) {
         position.y = 150
     }
@@ -22,32 +27,29 @@ export default function Player({skin}) {
     if(position.y > 900) {
         position.y = 900
     }
-    // turns directions into integer value
-    // const directions = {
-    //     down:0,
-    //     left:1,
-    //     right:2,
-    //     up:3,
-    // }
+
     // use hook that captures key press and translates into a direction (up, down, left, right)
     useKeyPress((e) => {
-        // if(position.y > 800) {
-        //     position.y = (position.y-1)
-        // }
-        // else if(position.x > 800) {
-        //     position.x = (position.x -1)
-        // }
-        // else {
-        // const dir = e.key.replace("Arrow", "").toLowerCase();
+        e.preventDefault();
         walk(e.key.replace("Arrow", "").toLowerCase())
         // if(directions.hasOwnProperty(dir)) console.log(dir);
         // debugging statement
-        e.preventDefault();
+        // CollectPlayerPosition(position.x, position.y)
+        // // .then((x, y) => {
+        // ComarePositions(position.x, position.y)
+        
+        // })
+        // e.preventDefault();
         // }
     })
 
     return (
+    
         <div className="zone-container">
+            <div>HP:</div>
+            <div>100/100</div>
+            <div>Hero Position:</div>
+            <div>x: {position.x} y: {position.y}</div>
             <Actor 
             sprite={`/sprites/skins/${skin}.png`}
             data={data}

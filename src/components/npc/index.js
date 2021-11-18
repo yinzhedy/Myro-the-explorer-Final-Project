@@ -1,11 +1,10 @@
 import React from "react";
-import Actor from "../actor/index"
 import useKeyPress from '../../hooks/use-key-press'
-import randomWalk from "../../hooks/random-walk";
 import useRandomWalk from "../../hooks/random-walk";
+import Actor from "../actor";
 
 export default function Npc({skin}) {
-    const {dir, step, walk, position} = randomWalk(3)
+    const {dir, step, walk, position} = useRandomWalk(3)
     const data = {
         h: 32,
         w: 32,

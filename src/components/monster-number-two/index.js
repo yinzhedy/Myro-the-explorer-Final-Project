@@ -1,11 +1,13 @@
 import React from "react";
-import Actor from "../actor/index"
+import Actor from "../actor"
 import useKeyPress from '../../hooks/use-key-press'
-import randomWalk from "../../hooks/random-walk";
 import useRandomWalk from "../../hooks/random-walk";
+import CollectMonsterPosition from "../../classes/collect-monster-position";
+
+
 
 export default function MonsterNumberTwo({skin}) {
-    const {dir, step, walk, position} = randomWalk(3)
+    const {dir, step, walk, position} = useRandomWalk(3)
     const data = {
         h: 32,
         w: 32,
@@ -14,11 +16,11 @@ export default function MonsterNumberTwo({skin}) {
     if(position.y < 500) {
         position.y = 500
     }
-    if(position.x < 800) {
-        position.x = 800
+    if(position.x < 400) {
+        position.x = 400
     }
-    if(position.x > 900) {
-        position.x = 900
+    if(position.x > 600) {
+        position.x = 600
     }
     if(position.y > 1000) {
         position.y = 1000
@@ -47,12 +49,15 @@ export default function MonsterNumberTwo({skin}) {
         walk(directions[randomDirection])
         // if(directions.hasOwnProperty(dir)) console.log(dir);
         // debugging statement
+        CollectMonsterPosition(position.x, position.y);
         e.preventDefault();
         // }
     })
 
     return (
         <div className="zone-container">
+            <div>Monster #2 Position:</div>
+            <div>x: {position.x} y: {position.y}</div>
             <Actor 
             sprite={`/sprites/skins/${skin}.png`}
             data={data}
