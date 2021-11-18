@@ -6,6 +6,7 @@ import CollectPlayerPosition from "../../classes/collect-player-position";
 import ComarePositions from "../../classes/compare-positions";
 import App from "../../App";
 
+let hp = 100;
 
 export default function Player({skin}) {
     const {dir, step, walk, position} = useWalk(3)
@@ -41,15 +42,31 @@ export default function Player({skin}) {
         // })
         // e.preventDefault();
         // }
+        let heroLocationX = document.getElementById('hero-location-x').textContent
+        let heroLocationY = document.getElementById('hero-location-y').textContent
+        console.log(heroLocationX, heroLocationY)
+        let monsterLocationX = document.getElementById('monster-location-x').textContent
+        let monsterLocationY = document.getElementById('monster-location-y').textContent
+        console.log(monsterLocationX, monsterLocationY)
+        function hitPoints() {
+            let hitPointsDisplay = document.getElementById('HP')
+            
+            if(heroLocationY === monsterLocationY && heroLocationX == monsterLocationY) {
+                console.log("collision!")
+               hp = hp-1
+            }
+        }
+        
     })
 
     return (
     
         <div className="zone-container">
             <div>HP:</div>
-            <div>100/100</div>
+            <div id="HP">{hp}/100</div>
             <div>Hero Position:</div>
-            <div>x: {position.x} y: {position.y}</div>
+            <div>x:<span id="hero-location-x">{position.x}</span></div>
+            <div>y:<span id="hero-location-y">{position.y}</span></div>
             <Actor 
             sprite={`/sprites/skins/${skin}.png`}
             data={data}

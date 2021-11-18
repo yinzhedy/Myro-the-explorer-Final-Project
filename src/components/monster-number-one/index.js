@@ -26,7 +26,7 @@ export default function MonsterNumberOne({skin}) {
 
     const directions = ['down', 'left', 'up', 'right']
     const randomDirection = Math.floor(Math.random() * directions.length);
-    console.log(randomDirection, directions[randomDirection])
+    // console.log(randomDirection, directions[randomDirection])
     // turns directions into integer value
     // const directions = {
     //     down:0,
@@ -55,7 +55,8 @@ export default function MonsterNumberOne({skin}) {
     return (
         <div className="zone-container">
             <div>Monster #1 Position:</div>
-            <div>x: {position.x} y: {position.y}</div>
+            <div>x:<span id="monster-location-x">{position.x}</span></div>
+            <div>y:<span id="monster-location-y">{position.y}</span></div>
             <Actor 
             sprite={`/sprites/skins/${skin}.png`}
             data={data}

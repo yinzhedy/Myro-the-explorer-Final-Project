@@ -8,7 +8,6 @@ import MonsterNumberOne from "./components/monster-number-one";
 import MonsterNumberTwo from "./components/monster-number-two";
 
 
-
 const CANVAS_WIDTH = 1000;
 const CANVAS_HEIGHT = 1000;
 
@@ -52,6 +51,8 @@ const CANVAS_HEIGHT = 1000;
     };
   
     getContext = () => this.canvasRef.current.getContext("2d");
+
+    
 
   render() {
   return (

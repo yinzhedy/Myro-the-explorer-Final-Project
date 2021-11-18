@@ -28,7 +28,7 @@ export default function MonsterNumberTwo({skin}) {
 
     const directions = ['down', 'left', 'up', 'right']
     const randomDirection = Math.floor(Math.random() * directions.length);
-    console.log(randomDirection, directions[randomDirection])
+    // console.log(randomDirection, directions[randomDirection])
     // turns directions into integer value
     // const directions = {
     //     down:0,
