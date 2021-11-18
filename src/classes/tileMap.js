@@ -60,34 +60,34 @@ export default class TileMap {
     getTile(layerIndex, columnIndex, rowIndex) {
       return this.layers[layerIndex][rowIndex * this.columns + columnIndex];
     }
-    // isSolidTileAtXY = (x, y) => {
-    //   const column = Math.floor(x / this.tileSize);
-    //   const row = Math.floor(y / this.tileSize);
+    isSolidTileAtXY = (x, y) => {
+      const column = Math.floor(x / this.tileSize);
+      const row = Math.floor(y / this.tileSize);
   
-    //   // tiles 3 and 5 are solid -- the rest are walkable
-    //   // loop through all layers and return TRUE if any tile is solid
-    //   return this.layers.reduce((res, layer, layerIndex) => {
-    //     const tile = this.getTile(layerIndex, column, row);
-    //     const isSolid = tile === 3 || tile === 5;
-    //     return res || isSolid;
-    //   }, false);
-    // }
+      // tiles 3 and 5 are solid -- the rest are walkable
+      // loop through all layers and return TRUE if any tile is solid
+      return this.layers.reduce((res, layer, layerIndex) => {
+        const tile = this.getTile(layerIndex, column, row);
+        const isSolid = tile === 3 || tile === 5;
+        return res || isSolid;
+      }, false);
+    }
   
-    // getColumn = x => {
-    //   return Math.floor(x / this.tileSize);
-    // }
+    getColumn = x => {
+      return Math.floor(x / this.tileSize);
+    }
   
-    // getRow = y => {
-    //   return Math.floor(y / this.tileSize);
-    // }
+    getRow = y => {
+      return Math.floor(y / this.tileSize);
+    }
   
-    // getX = column => {
-    //   return column * this.tileSize;
-    // }
+    getX = column => {
+      return column * this.tileSize;
+    }
   
-    // getY = row => {
-    //   return row * this.tileSize;
-    // }
+    getY = row => {
+      return row * this.tileSize;
+    }
   }
   
   
