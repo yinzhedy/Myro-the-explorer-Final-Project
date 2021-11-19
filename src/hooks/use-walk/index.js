@@ -1,5 +1,4 @@
 import {useState} from 'react';
-import CollectPlayerPosition from '../../classes/collect-player-position';
 
 export default function useWalk(maxSteps) {
     // STATES
@@ -26,9 +25,6 @@ export default function useWalk(maxSteps) {
         up: {x:0, y: -stepSize}
     }
     function walk(dir) {
-        // console.log(dir)
-        // console.dir(directions[dir])
-        // setDir(directions[dir])
         setDir(prev => {
             // prevent just turning
             if(directions[dir] === prev) move(dir)

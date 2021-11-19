@@ -3,15 +3,15 @@ import useKeyPress from '../../hooks/use-key-press'
 import useRandomWalk from "../../hooks/random-walk";
 import Actor from "../actor";
 
-export default function Npc({skin}) {
+export default function Leaf({skin}) {
     const {dir, step, walk, position} = useRandomWalk(3)
     const data = {
         h: 32,
         w: 32,
     };
 
-    if(position.y < 225) {
-        position.y = 225
+    if(position.y < 555) {
+        position.y = 555
     }
     if(position.x < 225) {
         position.x = 225
@@ -19,8 +19,8 @@ export default function Npc({skin}) {
     if(position.x > 380) {
         position.x = 380
     }
-    if(position.y > 380) {
-        position.y = 380
+    if(position.y > 700) {
+        position.y = 700
     }
 
     const directions = ['down', 'left', 'up', 'right']

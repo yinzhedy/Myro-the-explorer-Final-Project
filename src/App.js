@@ -3,9 +3,12 @@ import Game from './classes/game';
 import Player from './components/player/index';
 import './App.css';
 import Actor from "./components/actor";
-import Npc from "./components/npc";
+import Jack from "./components/Jack";
 import MonsterNumberOne from "./components/monster-number-one";
 import MonsterNumberTwo from "./components/monster-number-two";
+import Ghost from "./components/ghost";
+import Leaf from "./components/Leaf";
+import Laurel from "./components/Laurel"
 
 
 const CANVAS_WIDTH = 1000;
@@ -75,11 +78,13 @@ const CANVAS_HEIGHT = 1000;
             <div className='zone-container'>
               <Player skin="$Lanto180" data={data} /> 
             </div>
-            <div className="enemy-1">
-              <Npc skin="$Lanto179" data={data}/> 
+            <div className="actors">
+            <Ghost skin="$monja_dark" data={data}/> 
+              <Jack skin="Jack" data={data}/> 
               <MonsterNumberOne skin="$Lanto105" data={data}/>
               <MonsterNumberTwo skin="$Lanto108" data={data}/>
-              <Actor sprite="/sprites/skins/$Lanto176.png" data={data} position={0, 50}/> 
+              <Leaf skin="Leaf" data={data}/>
+              <Laurel skin="Laurel" data={data}/>
             </div>
         </div>
       </div>
