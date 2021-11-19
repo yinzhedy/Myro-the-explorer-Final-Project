@@ -47,15 +47,23 @@ export default function Player({skin}) {
         console.log(heroLocationX, heroLocationY)
         let monsterLocationX = document.getElementById('monster-location-x').textContent
         let monsterLocationY = document.getElementById('monster-location-y').textContent
-        console.log(monsterLocationX, monsterLocationY)
+        let monsterTwoLocationX = document.getElementById('monster-two-location-x').textContent
+        let monsterTwoLocationY = document.getElementById('monster-two-location-y').textContent
+        console.log(hp)
 
-        function hitPoints() {
+        function deductHitPointOnCollision() {
             let hitPointsDisplay = document.getElementById('HP')
             
             if( ((heroLocationY < monsterLocationY + 20) && (heroLocationY > monsterLocationY - 20))
                  && ((heroLocationX < monsterLocationX + 20) && (heroLocationX > monsterLocationX - 20))) 
                  {
-                console.log("collision!");
+                console.log("COLLISION WITH MONSTER ONE!");
+               return (hp = hp-1);
+            }
+            if( ((heroLocationY < monsterTwoLocationY + 20) && (heroLocationY > monsterTwoLocationY - 20))
+                 && ((heroLocationX < monsterTwoLocationX + 20) && (heroLocationX > monsterTwoLocationX - 20))) 
+                 {
+                console.log("COLLISION WITH MONSTER TWO!");
                return (hp = hp-1);
             }
             else {
@@ -63,7 +71,7 @@ export default function Player({skin}) {
             }
         }
 
-        hitPoints();
+        deductHitPointOnCollision();
         
     })
 

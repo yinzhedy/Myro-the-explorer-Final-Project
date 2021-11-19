@@ -57,7 +57,8 @@ export default function MonsterNumberTwo({skin}) {
     return (
         <div className="zone-container">
             <div>Monster #2 Position:</div>
-            <div>x: {position.x} y: {position.y}</div>
+            <div>x:<span id="monster-two-location-x">{position.x}</span></div>
+            <div>y:<span id="monster-two-location-y">{position.y}</span></div>
             <Actor 
             sprite={`/sprites/skins/${skin}.png`}
             data={data}
