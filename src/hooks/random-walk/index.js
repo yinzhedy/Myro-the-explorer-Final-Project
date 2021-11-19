@@ -25,7 +25,7 @@ export default function useRandomWalk(maxSteps) {
     }
 
     function walk(dir) {
-        console.log(dir)
+        // console.log(dir)
         // console.dir(directions[dir])
         // setDir(directions[dir])
         setDir(prev => {

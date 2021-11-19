@@ -3,8 +3,8 @@ import Actor from "../actor";
 import useKeyPress from '../../hooks/use-key-press'
 import useWalk from '../../hooks/use-walk'
 
-let hp = 100;
-let maxHp = 100;
+let hp = 15;
+let maxHp = 15;
 let exp = 0;
 let maxExp = 5;
 let level = 1;
@@ -43,39 +43,64 @@ export default function Player({skin}) {
         let monsterTwoLocationY = document.getElementById('monster-two-location-y').textContent
         let ghostLocationX = document.getElementById('ghost-location-x').textContent;
         let ghostLocationY = document.getElementById('ghost-location-y').textContent;
+        let leafLocationX = document.getElementById('leaf-location-x').textContent;
+        let leafLocationY = document.getElementById('leaf-location-y').textContent;
+        let laurelLocationX = document.getElementById('laurel-location-x').textContent;
+        let laurelLocationY = document.getElementById('laurel-location-y').textContent;
+        let jackLocationX = document.getElementById('jack-location-x').textContent;
+        let jackLocationY = document.getElementById('jack-location-y').textContent;
     
 
         function Collision() {
-            let hitPointsDisplay = document.getElementById('HP')
+           
+        
             
-            if( ((heroLocationY < monsterLocationY + 20) && (heroLocationY > monsterLocationY - 20))
-                 && ((heroLocationX < monsterLocationX + 20) && (heroLocationX > monsterLocationX - 20))) 
+            if( ((heroLocationY < monsterLocationY + 40) && (heroLocationY > monsterLocationY - 40))
+                 && ((heroLocationX < monsterLocationX + 40) && (heroLocationX > monsterLocationX - 40))) 
                  {
                 console.log("COLLISION WITH MONSTER ONE!");
 
                return (hp = hp-1);
             }
-            if( ((heroLocationY < monsterTwoLocationY + 20) && (heroLocationY > monsterTwoLocationY - 20))
-                 && ((heroLocationX < monsterTwoLocationX + 20) && (heroLocationX > monsterTwoLocationX - 20))) 
+            if( ((heroLocationY < monsterTwoLocationY + 40) && (heroLocationY > monsterTwoLocationY - 40))
+                 && ((heroLocationX < monsterTwoLocationX + 40) && (heroLocationX > monsterTwoLocationX - 40))) 
                  {
                 console.log("COLLISION WITH MONSTER TWO!");
                return (hp = hp-1);
             }
+            if( ((heroLocationY < leafLocationY + 40) && (heroLocationY > leafLocationY - 40))
+                 && ((heroLocationX < leafLocationX + 40) && (heroLocationX > leafLocationX - 40))) 
+                 {
+                    console.log('Youve met Leaf!')
+                    npcHeal();
+            }
+            if( ((heroLocationY < laurelLocationY + 40) && (heroLocationY > laurelLocationY - 40))
+                 && ((heroLocationX < laurelLocationX + 40) && (heroLocationX > laurelLocationX - 40))) 
+                 {
+                    console.log('Youve met Laurel!')
+                    npcHeal();
+            }
+            if( ((heroLocationY < jackLocationY + 40) && (heroLocationY > jackLocationY - 40))
+                 && ((heroLocationX < jackLocationX + 40) && (heroLocationX > jackLocationX - 40))) 
+                 {
+                    console.log('Youve met Jack!')
+                    npcHeal();
+            }
             else {
                 console.log('no collision yet...')
             }
-        }
+        };
 
         function expGain() {
-            if( ((ghostLocationY < monsterLocationY + 20) && (ghostLocationY > monsterLocationY - 20))
-                 && ((ghostLocationX < monsterLocationX + 20) && (ghostLocationX > monsterLocationX - 20))) 
+            if( ((ghostLocationY < monsterLocationY + 40) && (ghostLocationY > monsterLocationY - 40))
+                 && ((ghostLocationX < monsterLocationX + 40) && (ghostLocationX > monsterLocationX - 40))) 
                  {
                 console.log("TOOK 1 DAMAGE BUT HERO RECIEVED 1 EXP!");
                 
                return (exp = exp + 1);
             }
-            if( ((ghostLocationY < monsterTwoLocationY + 20) && (ghostLocationY > monsterTwoLocationY - 20))
-                 && ((ghostLocationX < monsterTwoLocationX + 20) && (ghostLocationX > monsterTwoLocationX - 20))) 
+            if( ((ghostLocationY < monsterTwoLocationY + 40) && (ghostLocationY > monsterTwoLocationY - 40))
+                 && ((ghostLocationX < monsterTwoLocationX + 40) && (ghostLocationX > monsterTwoLocationX - 40))) 
                  {
                 console.log("TOOK 1 DAMAGE BUT HERO RECIEVED 1 EXP!");
                return (exp= exp  + 1);
@@ -84,7 +109,7 @@ export default function Player({skin}) {
                 console.log('looking for monsters.....')
             }
 
-        }
+        };
 
         function levelUp() {
             if(exp === maxExp || exp > maxExp) {
@@ -95,7 +120,7 @@ export default function Player({skin}) {
                 return;
             }
             return;
-        }
+        };
 
         function adjustMaxExp() {
             if(exp === maxExp || exp > maxExp) {
@@ -105,10 +130,45 @@ export default function Player({skin}) {
                 return;
             }
             return;
+        };
+        
+        function adjustMaxHp() {
+            if(exp === maxExp || exp > maxExp) {
+                return (maxHp = Math.round(maxHp + (maxHp * .1)))
+            }
+            else {
+                return;
+            }
+        };
+
+
+        function npcHeal() {
+            console.log("How's it going?");
+            if(hp < maxHp) {
+                console.log('let me help you out a little...')
+                console.log(hp = (hp + ((maxHp - hp) * .5)))
+                // restores half of missing hp
+                return (hp = hp + (Math.round((maxHp - hp) * .5)))
+            }
+            else {
+                console.log ('I would help you out, but it looks like youre already good to go!')
+            }
         }
         
+        function handleDeath() {
+            if(hp === 0 || hp < 0) {
+                window.location.reload(true)
+                // const container = document.getElementById('root');
+                // container.style.display = 'none';
+                // const body = document.getElementById('body');
+                // body.style.backgroundImage = 'url(../public/images/game-over.jpg)';;
+
+        }}
+
+        handleDeath();
         levelUp();
         adjustMaxExp();
+        adjustMaxHp();
         expGain();
         console.log(exp);
         Collision();

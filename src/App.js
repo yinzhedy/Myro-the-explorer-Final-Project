@@ -69,7 +69,7 @@ const CANVAS_HEIGHT = 1000;
         <div className="subheader2">
           Use arrow keys to move
         </div>
-        <div className="gameContainer">
+        <div id="gameContainer" className="gameContainer">
           <canvas
             ref={this.canvasRef}
             width={CANVAS_WIDTH}

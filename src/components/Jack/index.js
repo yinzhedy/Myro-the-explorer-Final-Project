@@ -52,6 +52,8 @@ export default function Jack({skin}) {
 
     return (
         <div className="zone-container">
+            <div>x:<span id="jack-location-x">{position.x}</span></div>
+            <div>y:<span id="jack-location-y">{position.y}</span></div>
             <Actor 
             sprite={`/sprites/skins/${skin}.png`}
             data={data}

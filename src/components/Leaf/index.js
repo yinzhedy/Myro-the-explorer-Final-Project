@@ -52,6 +52,9 @@ export default function Leaf({skin}) {
 
     return (
         <div className="zone-container">
+            <div>Ghost Position:</div>
+            <div>x:<span id="leaf-location-x">{position.x}</span></div>
+            <div>y:<span id="leaf-location-y">{position.y}</span></div>
             <Actor 
             sprite={`/sprites/skins/${skin}.png`}
             data={data}
