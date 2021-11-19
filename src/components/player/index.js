@@ -6,7 +6,7 @@ import useWalk from '../../hooks/use-walk'
 let hp = 100;
 let maxHp = 100;
 let exp = 0;
-let maxExp = 25;
+let maxExp = 5;
 let level = 1;
 
 export default function Player({skin}) {
@@ -85,7 +85,30 @@ export default function Player({skin}) {
             }
 
         }
+
+        function levelUp() {
+            if(exp === maxExp || exp > maxExp) {
+                return (level = level + 1);
+            }
+            else {
+                console.log('what a grind-fest..')
+                return;
+            }
+            return;
+        }
+
+        function adjustMaxExp() {
+            if(exp === maxExp || exp > maxExp) {
+                return (maxExp = Math.round(maxExp + (maxExp * .2)));
+            }
+            else {
+                return;
+            }
+            return;
+        }
         
+        levelUp();
+        adjustMaxExp();
         expGain();
         console.log(exp);
         Collision();
