@@ -1,16 +1,14 @@
 {
-  "name": "shadow-chaser-an-arcard-game",
+  "name": "programming-thoughts",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "build": "cd client && npm run build",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "concurrently \"cd server && npm i\" \"cd client && npm i\"",
-    "client": "cd ./client && npm start ",
+    "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "eject": "react-scripts eject"
+    "build": "cd client && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -19,3 +17,4 @@
     "concurrently": "^5.1.0"
   }
 }
+
