@@ -1,96 +1,64 @@
-import React, { Component } from "react";
-import Game from './classes/game';
-import Player from './components/player/index';
-import './App.css';
-import Actor from "./components/actor";
-import Jack from "./components/Jack";
-import MonsterNumberOne from "./components/monster-number-one";
-import MonsterNumberTwo from "./components/monster-number-two";
-import Ghost from "./components/ghost";
-import Leaf from "./components/Leaf";
-import Laurel from "./components/Laurel"
+import React from 'react';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import ShadowChaser from './pages/Game';
 
-const CANVAS_WIDTH = 1000;
-const CANVAS_HEIGHT = 1000;
+// Construct our main GraphQL API endpoint
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
-  // sprite code
-  const data = {
-    h: 32,
-    w: 32,
-  }
-  // sprite code
-  class App extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        isGameRunning: false
-      };
-      this.canvasRef = React.createRef();
-    }
-  
-    componentDidMount = () => {
-      this.start();
-    };
-  
-    start = async () => {
-      if (!this.state.isGameRunning) {
-        this.game = new Game(this.getContext());
-        await this.game.init();
-        this.renderGame();
-      }
-      this.setState(state => ({ isGameRunning: !state.isGameRunning }));
-    };
-  
-    renderGame = () => {
-      requestAnimationFrame((elapsed) => {
-        this.game.render(elapsed);
-  
-        if (this.state.isGameRunning) {
-          this.renderGame();
-        }
-      });
-    };
-  
-    getContext = () => this.canvasRef.current.getContext("2d");
+const client = new ApolloClient({
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
-    
-
-  render() {
+function App() {
   return (
-    <div>
-        <div className="header">
-          Myro The Explorer
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
+          <div className="container">
+            <Route exact path="/">
+              <ShadowChaser />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+          </div>
         </div>
-        <div className="subheader">
-          "Not all those who wander are lost"
-        </div>
-        <div className="subheader2">
-          Use arrow keys to move
-        </div>
-        <div id="gameContainer" className="gameContainer">
-          <canvas
-            ref={this.canvasRef}
-            width={CANVAS_WIDTH}
-            height={CANVAS_HEIGHT}
-          />
-            <div className='zone-container'>
-              <Player skin="$Lanto180" data={data} /> 
-            </div>
-            <div className="actors">
-            <Ghost skin="$monja_dark" data={data}/> 
-              <Jack skin="Jack" data={data}/> 
-              <MonsterNumberOne skin="$Lanto105" data={data}/>
-              <MonsterNumberTwo skin="$Lanto108" data={data}/>
-              <Leaf skin="Leaf" data={data}/>
-              <Laurel skin="Laurel" data={data}/>
-            </div>
-        </div>
-      </div>
+      </Router>
+    </ApolloProvider>
   );
-  }
-
 }
 
 export default App;

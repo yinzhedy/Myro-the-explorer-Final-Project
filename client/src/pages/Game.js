@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import Game from './classes/game';
-import Player from './components/player/index';
-import './App.css';
-import Actor from "./components/actor";
-import Jack from "./components/Jack";
-import MonsterNumberOne from "./components/monster-number-one";
-import MonsterNumberTwo from "./components/monster-number-two";
-import Ghost from "./components/ghost";
-import Leaf from "./components/Leaf";
-import Laurel from "./components/Laurel"
+import Game from '../classes/game';
+import Player from '../components/player/index';
+// import './App.css';
+import Actor from "../components/actor";
+import Jack from "../components/Jack";
+import MonsterNumberOne from "../components/monster-number-one";
+import MonsterNumberTwo from "../components/monster-number-two";
+import Ghost from "../components/ghost";
+import Leaf from "../components/Leaf";
+import Laurel from "../components/Laurel"
 
 
 const CANVAS_WIDTH = 1000;
@@ -21,7 +21,7 @@ const CANVAS_HEIGHT = 1000;
     w: 32,
   }
   // sprite code
-  class Game extends Component {
+  class ShadowChaser extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -60,15 +60,6 @@ const CANVAS_HEIGHT = 1000;
   render() {
   return (
     <div>
-        <div className="header">
-          Myro The Explorer
-        </div>
-        <div className="subheader">
-          "Not all those who wander are lost"
-        </div>
-        <div className="subheader2">
-          Use arrow keys to move
-        </div>
         <div id="gameContainer" className="gameContainer">
           <canvas
             ref={this.canvasRef}
@@ -93,4 +84,4 @@ const CANVAS_HEIGHT = 1000;
 
 }
 
-export default Game;
+export default ShadowChaser;

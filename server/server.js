@@ -23,9 +23,9 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-app.use(express.static(path.join(__dirname, '../myro-the-explorer/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../myro-the-explorer/index.html'));
+  res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 db.once('open', () => {
