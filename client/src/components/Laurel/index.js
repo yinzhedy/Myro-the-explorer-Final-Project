@@ -10,17 +10,17 @@ export default function Leaf({skin}) {
         w: 32,
     };
 
-    if(position.y < 150) {
-        position.y = 150
+    if(position.y > -700) {
+        position.y = -700
     }
-    if(position.x < 650) {
-        position.x = 650
+    if(position.x < 200) {
+        position.x = 200
     }
     if(position.x > 900) {
         position.x = 900
     }
-    if(position.y > 900) {
-        position.y = 900
+    if(position.y < -950) {
+        position.y = -950
     }
 
     const directions = ['down', 'left', 'up', 'right']

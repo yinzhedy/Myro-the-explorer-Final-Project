@@ -19,6 +19,7 @@
  */
 body {
   margin: 0;
+  background-color: black;
 }
 
 /**
@@ -1705,4 +1706,10 @@ label form [type='radio'] {
   .align-content-center-xl {
     align-content: center;
   }
+}
+.zone-container {
+  position: absolute;
+}
+.gameContaier {
+  position: relative;
 }

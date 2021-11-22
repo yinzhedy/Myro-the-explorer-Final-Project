@@ -18,6 +18,9 @@ const userSchema = new Schema({
     type: Number,
     default: 0,
   },
+  // highScore: {
+  //   type: Number
+  // }
 });
 
 // set up pre-save middleware to create password

@@ -30,6 +30,7 @@ const Header = () => {
             </>
           ) : (
             <>
+              <div id="high-score"></div>
               <Link className="btn btn-lg btn-info m-2" to="/login">
                 Login
               </Link>
