@@ -22,7 +22,7 @@
     https://shadow-chaser-an-arcade-game.herokuapp.com/
 
     Image of Deployed application:
-    !(screenshot)(./client/public/images/applicationScreenShot.png)
+    ![screenshot](./client/public/images/applicationScreenShot.png)
 
 ## Instructions
     Follow installation instructions.
