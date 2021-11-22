@@ -186,7 +186,7 @@ export default function Player({skin}) {
     
         <div className="zone-container">
             <div id="high-score">{highScore}</div>
-            <div id="score">{score}</div>
+            <div id="score">SCORE: {score}</div>
             <div id="HP">HP:{hp}/{maxHp}</div>
             <div id="LEVEL">HERO LEVEL: {level}</div>
             <div id="EXP">EXP :{exp}/{maxExp}</div>
