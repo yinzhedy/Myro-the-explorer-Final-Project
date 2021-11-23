@@ -22,7 +22,7 @@
     https://shadow-chaser-an-arcade-game.herokuapp.com/
 
     Image of Deployed application:
-    ![screenshot](./client/public/images/applicationScreenShot.png)
+    ![image](https://github.com/yinzhedy/Myro-the-explorer-Final-Project/blob/e37eb3c104dca28ac595d091858317e76efb4ac7/client/public/images/applicationScreenShot.png)
 
 ## Instructions
     Follow installation instructions.
