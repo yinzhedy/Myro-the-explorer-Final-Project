@@ -31,6 +31,7 @@ const CANVAS_HEIGHT = 1000;
     }
   
     componentDidMount = () => {
+      
       this.start();
     };
   
