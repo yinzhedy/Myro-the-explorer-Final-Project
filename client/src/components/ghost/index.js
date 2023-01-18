@@ -19,18 +19,19 @@ export default function Ghost({skin}) {
     let maxHp = 50;
 
  
-    if(position.y < 150) {
-        position.y = 155
+    if(position.y > -150) {
+        position.y = -150
     }
-    if(position.x < 100) {
-        position.x = 100
+    if(position.x < 70) {
+        position.x = 70
     }
     if(position.x > 900) {
         position.x = 900
     }
-    if(position.y > 900) {
-        position.y = 900
+    if(position.y < -950) {
+        position.y = -950
     }
+
 
     // use hook that captures key press and translates into a direction (up, down, left, right)
     useKeyPress((e) => {

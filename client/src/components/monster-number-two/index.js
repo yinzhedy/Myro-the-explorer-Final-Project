@@ -13,17 +13,17 @@ export default function MonsterNumberTwo({skin}) {
         w: 32,
     };
 
-    if(position.y < 500) {
-        position.y = 500
+    if(position.y > -400) {
+        position.y = -400
     }
-    if(position.x < 400) {
-        position.x = 400
+    if(position.x < 100) {
+        position.x = 100
     }
-    if(position.x > 600) {
-        position.x = 600
+    if(position.x > 900) {
+        position.x = 900
     }
-    if(position.y > 1000) {
-        position.y = 1000
+    if(position.y < -1000) {
+        position.y = -1000
     }
 
     const directions = ['down', 'left', 'up', 'right']

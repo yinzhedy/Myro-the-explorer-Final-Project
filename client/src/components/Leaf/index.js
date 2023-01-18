@@ -10,18 +10,19 @@ export default function Leaf({skin}) {
         w: 32,
     };
 
-    if(position.y < 555) {
-        position.y = 555
+    if(position.y > -600) {
+        position.y = -600
     }
-    if(position.x < 225) {
-        position.x = 225
+    if(position.x < 400) {
+        position.x = 400
     }
-    if(position.x > 380) {
-        position.x = 380
+    if(position.x > 900) {
+        position.x = 900
     }
-    if(position.y > 700) {
-        position.y = 700
+    if(position.y < -950) {
+        position.y = -950
     }
+
 
     const directions = ['down', 'left', 'up', 'right']
     const randomDirection = Math.floor(Math.random() * directions.length);

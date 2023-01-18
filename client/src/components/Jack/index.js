@@ -10,18 +10,19 @@ export default function Jack({skin}) {
         w: 32,
     };
 
-    if(position.y < 225) {
-        position.y = 225
+    if(position.y > -150) {
+        position.y = -150
     }
-    if(position.x < 225) {
-        position.x = 225
+    if(position.x < 200) {
+        position.x = 200
     }
-    if(position.x > 380) {
-        position.x = 380
+    if(position.x > 900) {
+        position.x = 900
     }
-    if(position.y > 380) {
-        position.y = 380
+    if(position.y < -950) {
+        position.y = -950
     }
+
 
     const directions = ['down', 'left', 'up', 'right']
     const randomDirection = Math.floor(Math.random() * directions.length);

@@ -8,6 +8,8 @@ let exp = 0;
 let maxExp = 5;
 let level = 1;
 let maxHp = 15;
+let score = 0;
+let highScore = 0;
 
 export default function Player({skin}) {
     const {dir, step, walk, position} = useWalk(3)
@@ -16,17 +18,17 @@ export default function Player({skin}) {
         w: 32,
     };
  
-    if(position.y < 150) {
-        position.y = 150
+    if(position.y > -150) {
+        position.y = -150
     }
-    if(position.x < 100) {
-        position.x = 100
+    if(position.x < 70) {
+        position.x = 70
     }
     if(position.x > 900) {
         position.x = 900
     }
-    if(position.y > 900) {
-        position.y = 900
+    if(position.y < -950) {
+        position.y = -950
     }
 
     // use hook that captures key press and translates into a direction (up, down, left, right)
@@ -48,6 +50,8 @@ export default function Player({skin}) {
         let laurelLocationY = document.getElementById('laurel-location-y').textContent;
         let jackLocationX = document.getElementById('jack-location-x').textContent;
         let jackLocationY = document.getElementById('jack-location-y').textContent;
+        let ScoreDisplay = document.getElementById('score').textContent;
+        let HighScoreDisplay = document.getElementById('high-score').textContent;
     
 
         function Collision() {
@@ -59,7 +63,7 @@ export default function Player({skin}) {
                  && ((heroLocationX < monsterLocationX + 40) && (heroLocationX > monsterLocationX - 40))) 
                  {
                 console.log("COLLISION WITH MONSTER ONE!");
-
+                    
                return (hp = hp-1);
             }
             if( ((heroLocationY < monsterTwoLocationY + 40) && (heroLocationY > monsterTwoLocationY - 40))
@@ -95,6 +99,8 @@ export default function Player({skin}) {
             if( ((ghostLocationY < monsterLocationY + 40) && (ghostLocationY > monsterLocationY - 40))
                  && ((ghostLocationX < monsterLocationX + 40) && (ghostLocationX > monsterLocationX - 40))) 
                  {
+                score = score +1;
+                ScoreDisplay = score;
                 console.log("TOOK 1 DAMAGE BUT HERO RECIEVED 1 EXP!");
                 
                return (exp = exp + 1);
@@ -102,6 +108,8 @@ export default function Player({skin}) {
             if( ((ghostLocationY < monsterTwoLocationY + 40) && (ghostLocationY > monsterTwoLocationY - 40))
                  && ((ghostLocationX < monsterTwoLocationX + 40) && (ghostLocationX > monsterTwoLocationX - 40))) 
                  {
+                score = score +1;
+                ScoreDisplay = score;
                 console.log("TOOK 1 DAMAGE BUT HERO RECIEVED 1 EXP!");
                return (exp= exp  + 1);
             }
@@ -155,6 +163,9 @@ export default function Player({skin}) {
             }
         }
         
+        if (score > highScore) {
+            highScore = score;
+        }
         function handleDeath() {
             if(hp === 0 || hp < 0) {
                 window.location.reload(true)
@@ -174,6 +185,8 @@ export default function Player({skin}) {
     return (
     
         <div className="zone-container">
+            <div id="high-score">{highScore}</div>
+            <div id="score">SCORE: {score}</div>
             <div id="HP">HP:{hp}/{maxHp}</div>
             <div id="LEVEL">HERO LEVEL: {level}</div>
             <div id="EXP">EXP :{exp}/{maxExp}</div>

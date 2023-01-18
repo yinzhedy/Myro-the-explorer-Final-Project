@@ -17,9 +17,14 @@
     "bcrypt": "^5.0.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "graphql": "^15.5.0",
     "mongoose": "^5.13.13",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
+<<<<<<< HEAD
     "react-scripts": "^5.0.1"
+=======
+    "stripe": "^8.67.0"
+>>>>>>> f6c72bd4227426ac15f767a7b36f1f2a94583bc6
   }
 }
